@@ -35,6 +35,13 @@ export default function MovieCards(props) {
         media: {
             height: 200,
         },
+        button: {
+            backgroundColor: "#F5C518",
+            color: 'black',
+            border: '1px solid black',
+            margin: '10px',
+            fontWeight: 'bolder'
+        }, 
     });
 
     const classes = useStyles();
@@ -43,13 +50,13 @@ export default function MovieCards(props) {
     return (
         <>
             <div className="buttons">
-                <Button size="large" color="primary" onClick={() => {
+                <Button className={classes.button} size="large" color="yellow" onClick={() => {
                     page > 0 ? setPage(page - 1) : setPage(1)
                 }
                 }>
                     Previous
                     </Button>
-                <Button size="large" color="primary" onClick={() => { page < 993 ? setPage(page + 1) : setPage(993) }}>
+                <Button className={classes.button} size="large" color="yellow" onClick={() => { page < 993 ? setPage(page + 1) : setPage(993) }}>
                     Next
                     </Button>
             </div>
@@ -76,7 +83,7 @@ export default function MovieCards(props) {
                                 </CardContent>
                             </CardActionArea>
                             <CardActions>
-                                <Button size="small" color="primary" onClick={() => props.addFav(movie)}>
+                                <Button className={classes.button} size="small" color="yellow" onClick={() => props.addFav(movie)}>
                                     Add to Favorites
                                 </Button>
                             </CardActions>

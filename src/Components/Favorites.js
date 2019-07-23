@@ -17,17 +17,14 @@ const useStyles = makeStyles({
     },
 });
 
-
 export default function Favorites(props) {
     console.log('props in favorites', props);
     const classes = useStyles();
 
 
-
-
     return (
         <section className="moviecards">
-            {props.favorites.map(fav => {
+            {props.favorites.length ? props.favorites.map(fav => {
                 return (
                     <Card className={classes.card}>
                         <CardActionArea>
@@ -46,13 +43,13 @@ export default function Favorites(props) {
                             </CardContent>
                         </CardActionArea>
                         <CardActions>
-                            <Button size="small" color="primary" onClick={() => props.removeFav(fav)}>
+                            <Button size="small" color="default" onClick={() => props.removeFav(fav)}>
                                 Remove from Favorites
                                 </Button>
                         </CardActions>
                     </Card>
                 )
-            })}
+            }) : <div className="message">You don't have any saved favorites</div>}
         </section>
 
     )
