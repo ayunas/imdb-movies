@@ -29,10 +29,11 @@ export default function MovieCard() {
     const useStyles = makeStyles({
         card: {
             maxWidth: 345,
-
+            minHeight: 550,
+            overflow: 'scroll'
         },
         media: {
-            height: 140,
+            height: 200,
         },
     });
 
@@ -40,44 +41,47 @@ export default function MovieCard() {
     console.log(movies);
 
     return (
-        <div className='movie-cards'>
-            {movies.map(movie => {
-                return (
-                    <Card className={classes.card}>
-                        <CardActionArea>
-                            <CardMedia
-                                className={classes.media}
-                                image={`https://image.tmdb.org/t/p/w500/${movie.backdrop_path}`}
-                                title={movie.original_title}
-                            />
-                            <CardContent>
-                                <Typography gutterBottom variant="h5" component="h2">
-                                    {movie && movie.original_title}
-                                </Typography>
-                                <Typography variant="body2" color="textSecondary" component="p">
-                                    {movies && movie.overview}
-                                </Typography>
-                            </CardContent>
-                        </CardActionArea>
-                        <CardActions>
-                            <Button size="small" color="primary">
-                                Add to Favorites
+        <>
+            <Button size="large" color="primary" onClick={() => {
+                page > 0 ? setPage(page - 1) : setPage(1)
+            }
+            }>
+                Previous
+                </Button>
+            <Button size="large" color="primary" onClick={() => { page < 993 ? setPage(page + 1) : setPage(993) }}>
+                Next
+                </Button>
+            <div className='movie-cards'>
+
+                {movies.map(movie => {
+                    return (
+                        <Card className={classes.card}>
+
+                            <CardActionArea>
+                                <CardMedia
+                                    className={classes.media}
+                                    image={`https://image.tmdb.org/t/p/w500/${movie.backdrop_path}`}
+                                    title={movie.original_title}
+                                />
+                                <CardContent>
+                                    <Typography gutterBottom variant="h5" component="h2">
+                                        {movie && movie.original_title}
+                                    </Typography>
+                                    <Typography variant="body2" color="textSecondary" component="p">
+                                        {movies && movie.overview}
+                                    </Typography>
+                                </CardContent>
+                            </CardActionArea>
+                            <CardActions>
+                                <Button size="small" color="primary">
+                                    Add to Favorites
                         </Button>
-                        </CardActions>
-                    </Card>
-                )
-            })}
-            <CardActions>
-                <Button size="small" color="primary" onClick={() => {
-                    page > 0 ? setPage(page - 1) : setPage(1)
-                }
-                }>
-                    Previous
-                </Button>
-                <Button size="small" color="primary" onClick={() => { page < 993 ? setPage(page + 1) : setPage(993) }}>
-                    Next
-                </Button>
-            </CardActions>
-        </div>
+                            </CardActions>
+                        </Card>
+                    )
+                })}
+
+            </div>
+        </>
     )
 }
