@@ -10,7 +10,7 @@ import CardMedia from '@material-ui/core/CardMedia';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 
-export default function MovieCard() {
+export default function MovieCards(props) {
 
     const [movies, setMovies] = useState([]);
     const [page, setPage] = useState(1);
@@ -42,21 +42,22 @@ export default function MovieCard() {
 
     return (
         <>
-            <Button size="large" color="primary" onClick={() => {
-                page > 0 ? setPage(page - 1) : setPage(1)
-            }
-            }>
-                Previous
-                </Button>
-            <Button size="large" color="primary" onClick={() => { page < 993 ? setPage(page + 1) : setPage(993) }}>
-                Next
-                </Button>
-            <div className='movie-cards'>
-
+            <div className="buttons">
+                <Button size="large" color="primary" onClick={() => {
+                    page > 0 ? setPage(page - 1) : setPage(1)
+                }
+                }>
+                    Previous
+                    </Button>
+                <Button size="large" color="primary" onClick={() => { page < 993 ? setPage(page + 1) : setPage(993) }}>
+                    Next
+                    </Button>
+            </div>
+            <section className="moviecards">
+                {/* <div className='movies'> */}
                 {movies.map(movie => {
                     return (
                         <Card className={classes.card}>
-
                             <CardActionArea>
                                 <CardMedia
                                     className={classes.media}
@@ -67,21 +68,23 @@ export default function MovieCard() {
                                     <Typography gutterBottom variant="h5" component="h2">
                                         {movie && movie.original_title}
                                     </Typography>
+
                                     <Typography variant="body2" color="textSecondary" component="p">
                                         {movies && movie.overview}
                                     </Typography>
+
                                 </CardContent>
                             </CardActionArea>
                             <CardActions>
-                                <Button size="small" color="primary">
+                                <Button size="small" color="primary" onClick={() => props.addFav(movie)}>
                                     Add to Favorites
-                        </Button>
+                                </Button>
                             </CardActions>
                         </Card>
                     )
                 })}
-
-            </div>
+                {/* </div> */}
+            </section>
         </>
     )
 }

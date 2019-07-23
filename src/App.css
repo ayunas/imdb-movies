@@ -1,7 +1,69 @@
-.movie-cards {
+body {
+  background-color: lightgray;
+}
+
+.app {
+  width: 80vw;
+  margin: 0 auto;
+}
+
+nav {
+  background-color: black;
+  min-height: 100px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;  
+  padding: 20px;
+}
+
+nav div {
+  color: black;
+  cursor: pointer;
+  background-color: #F5C518;
+  text-decoration: none;
+  padding: 10px 30px;
+  border-radius: 10px;
+}
+
+nav input {
+  width: 500px;
+  height: 30px;
+}
+
+#logo{
+  width: 100px;
+}
+
+#yellow-box, #favorites {
+  background-color: #F5C518;
+  padding: 7px;
+  margin-left: 10px;
+  text-decoration: none;
+}
+
+section.moviecards {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  align-items: center;
+  border: 5px solid black;
+  background-color: black;
+  padding: 10px; 
+}
+
+.movies {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
+  justify-content: center;
   height: 500px;
+  /* border: 5px solid green; */
+}
+
+.buttons {
+  margin: 0 auto;
+  /* width: 100%; */
+  display: flex;
+  flex-direction: center;
 }
 
