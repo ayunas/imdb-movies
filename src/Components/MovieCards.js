@@ -18,7 +18,7 @@ export default function MovieCards(props) {
     useEffect(() => {
         axios.get(`https://api.themoviedb.org/3/movie/popular?api_key=f24f2adccef9e40187e73a2223da546c&page=${page}`)
             .then(res => {
-                console.log(res.data.results);
+                // console.log(res.data.results);
                 setMovies(res.data.results);
             })
             .catch(err => {
@@ -45,7 +45,7 @@ export default function MovieCards(props) {
     });
 
     const classes = useStyles();
-    console.log(movies);
+    // console.log(movies);
 
     return (
         <>
