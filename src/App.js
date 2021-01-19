@@ -12,7 +12,8 @@ import axios from 'axios';
 function App(props) {
 
   let [favorites, setFavorites] = useState([]);
-  const [searched, setSearched] = useState([])
+  const [searched, setSearched] = useState([]);
+  const [data, setData] = useState(null); //dummy
 
   const addFav = (movie) => {
     console.log('favorite function triggered, movie: ', movie);
